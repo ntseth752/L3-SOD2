@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BOOK ZONE | Online Book Store</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #111;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1606813902497-c58e03224c43?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3em;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .form-section {
+      margin-bottom: 40px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      margin-bottom: 10px;
+    }
+
+    .product-info p {
+      color: #777;
+    }
+
+    .price {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BOOK ZONE</h1>
+    <p>YOUR FAVORITE</p>
+  </header>
+
+  <nav>
+    <a href="#">Register</a>
+    <a href="#">Login</a>
+    <a href="#">Child</a>
+    <a href="#">Adult</a>
+  </nav>
+
+  <div class="hero">
+    STEP INTO BOOKS STORE
+  </div>
+
+  <div class="container">
+
+    
+    <div class="form-section">
+      <h2>Add a Book</h2>
+      <input type="text" id="title" placeholder="Book Title">
+      <input type="text" id="author" placeholder="Author">
+      <input type="file" id="upload " placeholder="upload book image">
+      
+      <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <h2 style="margin-bottom: 20px;">FEATURED LIST</h2>
+    <div class="product-grid" id="bookGrid">
+      
+      <div class="product">
+        <img src="Untitled.jpg" alt="BOOK 1">
+        <div class="product-info">
+          <h3>DICTIONARY</h3>
+          <p>Comfortable for learning</p>
+          <p class="price">Required: student card</p>
+        </div>
+      </div>
+      <div class="product">
+        <img src="Untitleds.jpg" alt="BOOK 2">
+        <div class="product-info">
+          <h3>STORY BOOKS</h3>
+          <p>Best for Child</p>
+          <p class="price">1400</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 SETHLIBRARY. All rights reserved.
+  </footer>
+
+  <script>
+    function addBook() {
+      const title = document.getElementById('title').value.trim();
+      const author = document.getElementById('author').value.trim();
+      const upload = document.getElementById('upload').value.trim();//coo
+
+      if (title && author&&upload //oo) {
+        const grid = document.getElementById('bookGrid');
+
+        const product = document.createElement('div');
+        product.className = 'product';
+        product.innerHTML = `
+          <img src="https://via.placeholder.com/250x200?text=New+Book" alt="${title}">
+          <div class="product-info">
+            <h3>${title}</h3>
+            <p>By ${author}</p>
+            <p class="price">New</p>
+          </div>
+        `;
+
+        grid.appendChild(product);
+
+        document.getElementById('title').value = '';
+        document.getElementById('author').value = '';
+        document.getElementById('upload').value = '';//coo
+      } else {
+        alert('Please enter both title and author.');
+      }
+    }
+  </script>
+
+</body>
+</html>
